@@ -21,12 +21,16 @@ spec:
         ports:
         - containerPort: 3000
         volumeMounts:
-        - name: grafana-dashboard  # Ensure this matches the volume name below
+        - name: dashboard-config
           mountPath: /etc/grafana/provisioning/dashboards
+          subPath: dashboard.json
     volumes:
-    - name: grafana-dashboard  # This should match the volumeMount name
+    - name: dashboard-config
       configMap:
-        name: gateway-dashboard-kz-json
+        name: grafana-dashboard
+        items:
+        - key: dashboard.json
+          path: dashboard.json
 
 
 ---
