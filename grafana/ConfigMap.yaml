@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard
+  name: Gateway-dashboard-KZ.json
+  namespace: monitoring
 data:
   Gateway-dashboard-KZ.json: |
     {
