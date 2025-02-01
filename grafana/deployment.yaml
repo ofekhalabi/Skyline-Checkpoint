@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana
+  namespace: monitoring
   labels:
     app: grafana
 spec:
@@ -19,17 +20,6 @@ spec:
         image: grafana/grafana:10.4.14
         ports:
         - containerPort: 3000
-        volumeMounts:
-        - name: dashboard-config
-          mountPath: /etc/grafana/provisioning/dashboards
-          subPath: dashboard.json
-    volumes:
-    - name: dashboard-config
-      configMap:
-        name: grafana-dashboard
-        items:
-        - key: dashboard.json
-          path: dashboard.json
 
 
 ---
@@ -37,6 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana-service
+  namespace: monitoring
 spec:
   selector:
     app: grafana
