@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
 metadata:
   name: grafana
   namespace: monitoring
@@ -29,16 +29,15 @@ spec:
         name: Gateway-dashboard-KZ.json
 
 ---
-service:
-  apiVersion: v1
-  kind: service
-  metadata:
-    name: grafana-service
-    namespace: monitoring
-  spec:
-    selector:
-      app: grafana
-    ports:
-      - protocol: TCP
-        port: 3000
-        targetPort: 3000
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  namespace: monitoring
+spec:
+  selector:
+    app: grafana
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
