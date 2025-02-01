@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: Gateway-dashboard-KZ.json
+  name: gateway-dashboard-kz-json
   namespace: monitoring
 data:
-  Gateway-dashboard-KZ.json: |
+  gateway-dashboard-kz-json: |
     {
       "__inputs": [
         {
