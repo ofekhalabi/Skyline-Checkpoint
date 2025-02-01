@@ -21,10 +21,10 @@ spec:
         ports:
         - containerPort: 3000
         volumeMounts:
-        - name: gateway-dashboard-kz-json  # Ensure this matches the volume name below
-          mountPath: /var/lib/grafana/dashboards
+        - name: grafana-dashboard  # Ensure this matches the volume name below
+          mountPath: /var/lib/grafana
     volumes:
-    - name: gateway-dashboard-kz-json  # This should match the volumeMount name
+    - name: grafana-dashboard  # This should match the volumeMount name
       configMap:
         name: gateway-dashboard-kz-json
 
