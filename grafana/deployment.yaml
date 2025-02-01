@@ -22,7 +22,7 @@ spec:
         - containerPort: 3000
         volumeMounts:
         - name: grafana-dashboard  # Ensure this matches the volume name below
-          mountPath: /var/lib/grafana
+          mountPath: /etc/grafana/provisioning/dashboards
     volumes:
     - name: grafana-dashboard  # This should match the volumeMount name
       configMap:
