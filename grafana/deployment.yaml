@@ -21,12 +21,12 @@ spec:
         ports:
         - containerPort: 3000
         volumeMounts:
-        - name: grafana-dashboard
+        - name: grafana-dashboard-config
           mountPath: /var/lib/grafana/dashboards
     volumes:
-    - name: grafana-dashboard
+    - name: grafana-dashboard-config
       configMap:
-        name: Gateway-dashboard-KZ.json
+        name: grafana-dashboard
 
 ---
 apiVersion: v1
