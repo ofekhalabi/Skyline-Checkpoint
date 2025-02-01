@@ -14,7 +14,7 @@ Skyline quickly and efficiently monitors your Check Point servers with industry-
 | **Grafana** | A third-party software that connects to multiple data sources/databases (such as Prometheus) and visualizes the data, builds graphs, dashboards, and alerts.<br><br>Check Point supports **Grafana version 9** and higher. | ⚠️ Config Needed |
 | **ArgoCD** | ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It enables the management and automation of Kubernetes cluster deployments directly from a Git repository. | ⚠️ Config Needed |
 
-# Prometheus and Grafana Configuration Guide
+# Skyline Administration Guide
 
 For detailed instructions on configuring Prometheus with Grafana on Check Point Servers running Gaia OS, refer to the official guide:
 
