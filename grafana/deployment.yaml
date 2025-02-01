@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: deployment
 metadata:
   name: grafana
   namespace: monitoring
@@ -31,7 +31,7 @@ spec:
 ---
 service:
   apiVersion: v1
-  kind: Service
+  kind: service
   metadata:
     name: grafana-service
     namespace: monitoring
