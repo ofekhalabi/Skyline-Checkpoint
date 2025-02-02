@@ -35,6 +35,21 @@ Skyline quickly and efficiently monitors your Check Point servers with industry-
    ```sh
    sklnctl export --set "$(cat /home/admin/payload.json)"
    ```
+### Step 5: Configure the filter for the OpenTelemetry Collector exported metrics
+- The sklnctl tool configures the OpenTelemetry Collector.
+- The OpenTelemetry Collector filter works on the allow-list basis.
+1. Show the currently exported metrics:
+   ```sh
+   sklnctl otelcol metrics --show > /var/log/metrics.txt
+   ```
+2. Edit the file to keep only the desired metrics:
+   ```sh
+   vi /var/log/metrics.txt
+   ```
+3. Add the desired metrics to the allow-list:
+   ```sh
+   sklnctl otelcol metrics --add $(cat /var/log/metrics.txt | tr '\n' ' ')
+   ```
 
 # Prometheus and Grafana Configuration Guide
 
