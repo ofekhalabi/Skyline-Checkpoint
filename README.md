@@ -25,10 +25,21 @@ Skyline quickly and efficiently monitors your Check Point servers with industry-
 - Use Kubernetes to set up the Grafana server.
 - The configuration files for Grafana are available in this repository.
 
-### Step 3: Install OpenTelemetry Agent and Collector on Check Point Server
+### Step 3: Install ArgoCD 
+1. Run the following command:
+   ```sh
+   kubectl create namespace argocd
+   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+   ```
+2. The username is admin, the initial password can be retrieved by:
+   ```sh
+   kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 --decode
+   ```
+
+### Step 4: Install OpenTelemetry Agent and Collector on Check Point Server
 - In Check Point R81 and higher (with the required minimum Jumbo Hotfix Accumulator), the OpenTelemetry Agent and OpenTelemetry Collector are installed as part of the Jumbo Hotfix Accumulator installation.
 
-### Step 4: Configure OpenTelemetry Collector to Work with Prometheus Server
+### Step 5: Configure OpenTelemetry Collector to Work with Prometheus Server
 1. Configure the payload (with TLS or without it). The payload file is available in this repository.
 2. Save the JSON payload to a file (e.g., `/home/admin/payload.json`).
 3. Run the following command on each Security Gateway / Cluster Member / Management Server:
@@ -36,7 +47,7 @@ Skyline quickly and efficiently monitors your Check Point servers with industry-
    sklnctl export --set "$(cat /home/admin/payload.json)"
    ```
 
-### Step 5: Configure the filter for the OpenTelemetry Collector exported metrics
+### Step 6: Configure the filter for the OpenTelemetry Collector exported metrics
 - The sklnctl tool configures the OpenTelemetry Collector.
 - The OpenTelemetry Collector filter works on the allow-list basis.
 1. Show the currently exported metrics:
@@ -52,7 +63,7 @@ Skyline quickly and efficiently monitors your Check Point servers with industry-
    sklnctl otelcol metrics --add $(cat /var/log/metrics.txt | tr '\n' ' ')
    ```
 
-### Step 6: Configure Access Control Policy
+### Step 7: Configure Access Control Policy
 - If you configured Skyline on a Security Gateway, ClusterXL, or Scalable Platform Security Group, then you must make sure your Access Control Policy allows the connection to the Prometheus Server to send the exported metrics.
 
 
