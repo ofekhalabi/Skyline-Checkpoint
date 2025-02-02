@@ -14,7 +14,39 @@ Skyline quickly and efficiently monitors your Check Point servers with industry-
 | **Grafana** | A third-party software that connects to multiple data sources/databases (such as Prometheus) and visualizes the data, builds graphs, dashboards, and alerts.<br><br>Check Point supports **Grafana version 9** and higher. | ⚠️ Config Needed |
 | **ArgoCD** | ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It enables the management and automation of Kubernetes cluster deployments directly from a Git repository. | ⚠️ Config Needed |
 
-# Skyline Administration Guide
+# Work steps
+1. install the Prometheus server - We will use kubernetes to set up the Prometheus server. The configuration appears in this repository.
+2. install the Grafana server - We will use kubernetes to set up the Grafana server. The configuration appears in this repository.
+3. Install the OpenTelemetry Agent and OpenTelemetry Collector on the Check Point Server - In the Checkpoint R81 version and the minimum Jumbo Hotfix Accumulator for R81 - Take 77, the OpenTelemetry Agent and OpenTelemetry Collector packages are also installed as part of the Jumbo Hotfix Accumulator installation.
+4. Configure the OpenTelemetry Collector on the Check Point Server to work with the Prometheus Server 
+    1. configure the payload (with tls or not). the payload file appears in this repository.
+    2. Save the JSON payload in a file (for example, /home/admin/payload.json).
+    3. run this command on a Security Gateway / each Cluster Member / Management Server:
+        sklnctl export --set "$(cat /home/admin/payload.json)"
+
+
+## Work Steps
+
+### Step 1: Install Prometheus Server
+- Use Kubernetes to set up the Prometheus server.
+- The configuration files for Prometheus are available in this repository.
+
+### Step 2: Install Grafana Server
+- Use Kubernetes to set up the Grafana server.
+- The configuration files for Grafana are available in this repository.
+
+### Step 3: Install OpenTelemetry Agent and Collector on Check Point Server
+- In Check Point R81 and higher (with the required minimum Jumbo Hotfix Accumulator), the OpenTelemetry Agent and OpenTelemetry Collector are installed as part of the Jumbo Hotfix Accumulator installation.
+
+### Step 4: Configure OpenTelemetry Collector to Work with Prometheus Server
+1. Configure the payload (with TLS or without it). The payload file is available in this repository.
+2. Save the JSON payload to a file (e.g., `/home/admin/payload.json`).
+3. Run the following command on each Security Gateway / Cluster Member / Management Server:
+   ```sh
+   sklnctl export --set "$(cat /home/admin/payload.json)"
+   ```
+
+# Prometheus and Grafana Configuration Guide
 
 For detailed instructions on configuring Prometheus with Grafana on Check Point Servers running Gaia OS, refer to the official guide:
 
