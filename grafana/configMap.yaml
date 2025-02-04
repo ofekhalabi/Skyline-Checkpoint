@@ -1897,7 +1897,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "builder",
-              "expr": "system_network_connections_rate{environment=~\"$d_environment\", host_name=\"$d_hostname\", component=\"Host\"}",
+              "expr": "system_network_connections_rate{
+                environment=~\"$d_environment\",
+                host_name=\"$d_hostname\",
+                component=\"Host\"}",
               "legendFormat": "CPS",
               "range": true,
               "refId": "A"
@@ -1990,7 +1993,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "builder",
-              "expr": "system_network_interface_io_transmit_rate{environment=~\"$d_environment\", host_name=~\"$d_hostname\", interface=\"TOTAL\"}",
+              "expr": "system_network_interface_io_transmit_rate{
+                environment=~\"$d_environment\",
+                host_name=~\"$d_hostname\",
+                interface=\"TOTAL\"}",
               "legendFormat": "Total TX",
               "range": true,
               "refId": "A"
@@ -2001,7 +2007,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "system_network_interface_io_receive_rate{environment=~\"$d_environment\", host_name=~\"$d_hostname\", interface=\"TOTAL\"}",
+              "expr": "system_network_interface_io_receive_rate{
+                environment=~\"$d_environment\",
+                host_name=~\"$d_hostname\",
+                interface=\"TOTAL\"}",
               "hide": false,
               "legendFormat": "Total RX",
               "range": true,
@@ -2114,7 +2123,11 @@ data:
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (interface) (system_network_interface_io_receive_rate{host_name=~\"$d_hostname\", environment=~\"$d_environment\", interface!~\"TOTAL|lo\"})",
+              "expr": "sum by (interface) (
+                system_network_interface_io_receive_rate{
+                  host_name=~\"$d_hostname\",
+                  environment=~\"$d_environment\",
+                  interface!~\"TOTAL|lo\"})",
               "interval": "",
               "legendFormat": "RX {{interface}}",
               "range": true,
@@ -2127,7 +2140,11 @@ data:
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (interface) (system_network_interface_io_transmit_rate{host_name=~\"$d_hostname\", environment=~\"$d_environment\", interface!~\"TOTAL|lo\"})",
+              "expr": "sum by (interface) (
+                system_network_interface_io_transmit_rate{
+                  host_name=~\"$d_hostname\",
+                  environment=~\"$d_environment\",
+                  interface!~\"TOTAL|lo\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "TX {{interface}}",
