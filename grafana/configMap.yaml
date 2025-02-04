@@ -842,7 +842,11 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "system_gaia_os_version{version=~\".+\", host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\"}",
+              "expr": "system_gaia_os_version{"
+                      "version=~\".+\","
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\","
+                      "service_namespace=\"vs_id_0\"}",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -914,7 +918,11 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "hardware_model{model=~\".+\", host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\"}",
+              "expr": "hardware_model{"
+                      "model=~\".+\","
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\","
+                      "service_namespace=\"vs_id_0\"}",
               "instant": true,
               "interval": "",
               "legendFormat": "{{model}}",
