@@ -2191,7 +2191,9 @@ data:
               "type": "prometheus",
               "uid": "${DS_PROMETHEUS}"
             },
-            "definition": "label_values(system_uptime{environment=~\"$d_environment\"},host_name)",
+            "definition": "label_values(
+              system_uptime{environment=~\"$d_environment\"},
+              host_name)",
             "hide": 0,
             "includeAll": true,
             "label": "Hostname:",
@@ -2199,7 +2201,9 @@ data:
             "name": "d_hostname",
             "options": [],
             "query": {
-              "query": "label_values(system_uptime{environment=~\"$d_environment\"},host_name)",
+              "query": "label_values(
+                system_uptime{environment=~\"$d_environment\"},
+                host_name)",
               "refId": "StandardVariableQuery"
             },
             "refresh": 1,
