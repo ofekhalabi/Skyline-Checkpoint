@@ -25,6 +25,8 @@ spec:
           mountPath: /var/lib/grafana/dashboards
         - name: grafana-dashboard-provider-volume
           mountPath: /etc/grafana/provisioning/dashboards
+        - name: grafana-datasource-volume
+          mountPath: /etc/grafana/provisioning/datasources
       volumes:
       - name: grafana-dashboard-volume
         configMap:
@@ -32,6 +34,9 @@ spec:
       - name: grafana-dashboard-provider-volume
         configMap:
           name: grafana-dashboard-provider
+      - name: grafana-datasource-volume
+        configMap:
+          name: grafana-datasources
 
 
 ---
