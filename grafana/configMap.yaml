@@ -175,7 +175,13 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "system_gaia_os_role{role=~\".+\", host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\"}",
+              "expr": >
+                system_gaia_os_role{
+                  role=~".+", 
+                  host_name=~"$d_hostname", 
+                  environment=~"$d_environment", 
+                  service_namespace="vs_id_0"
+                },
               "instant": true,
               "interval": "",
               "legendFormat": "{{role}}",
@@ -251,7 +257,17 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "system_paging_usage{host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\", state=\"used\"}/ ignoring (state) system_paging_limit{host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\"} * 100",
+              "expr": >
+                system_paging_usage{
+                  host_name=~"$d_hostname", 
+                  environment=~"$d_environment", 
+                  service_namespace="vs_id_0", 
+                  state="used"
+                } / ignoring (state) system_paging_limit{
+                  host_name=~"$d_hostname", 
+                  environment=~"$d_environment", 
+                  service_namespace="vs_id_0"
+                } * 100,
               "instant": true,
               "interval": "",
               "legendFormat": "SWAP",
@@ -264,7 +280,19 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "system_filesystem_usage{host_name=~\"$d_hostname\", environment=~\"$d_environment\", mountpoint=\"/\", service_namespace=\"vs_id_0\", state=\"used\"}/ ignoring (state) system_filesystem_limit{host_name=~\"$d_hostname\", environment=~\"$d_environment\", mountpoint=\"/\", service_namespace=\"vs_id_0\"} * 100",
+              "expr": >
+                system_filesystem_usage{
+                  host_name=~"$d_hostname", 
+                  environment=~"$d_environment", 
+                  mountpoint="/", 
+                  service_namespace="vs_id_0", 
+                  state="used"
+                } / ignoring (state) system_filesystem_limit{
+                  host_name=~"$d_hostname", 
+                  environment=~"$d_environment", 
+                  mountpoint="/", 
+                  service_namespace="vs_id_0"
+                } * 100,
               "hide": false,
               "legendFormat": "ROOT FS",
               "range": true,
@@ -276,7 +304,19 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "system_filesystem_usage{host_name=~\"$d_hostname\", environment=~\"$d_environment\", mountpoint=\"/var/log\", service_namespace=\"vs_id_0\", state=\"used\"}/ ignoring (state) system_filesystem_limit{host_name=~\"$d_hostname\", environment=~\"$d_environment\", mountpoint=\"/var/log\", service_namespace=\"vs_id_0\"} * 100",
+              "expr": >
+                system_filesystem_usage{
+                  host_name=~"$d_hostname", 
+                  environment=~"$d_environment", 
+                  mountpoint="/var/log", 
+                  service_namespace="vs_id_0", 
+                  state="used"
+                } / ignoring (state) system_filesystem_limit{
+                  host_name=~"$d_hostname", 
+                  environment=~"$d_environment", 
+                  mountpoint="/var/log", 
+                  service_namespace="vs_id_0"
+                } * 100,
               "hide": false,
               "legendFormat": "LOGS FS",
               "range": true,
