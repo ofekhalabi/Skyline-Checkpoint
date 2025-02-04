@@ -1112,7 +1112,9 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "blades_update_state{host_name=~\"gw91\", environment=~\"Default\"}",
+              "expr": "blades_update_state{"
+                      "host_name=~\"gw91\","
+                      "environment=~\"Default\"}",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1267,7 +1269,9 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "1000 * blades_update_time{host_name=~\"$d_hostname\", environment=~\"$d_environment\"}",
+              "expr": "1000 * blades_update_time{"
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\"}",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1351,7 +1355,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "firewall_policy_name{host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\"}",
+              "expr": "firewall_policy_name{"
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\","
+                      "service_namespace=\"vs_id_0\"}",
               "hide": false,
               "legendFormat": "{{name}}",
               "range": true,
@@ -1420,7 +1427,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "count by(entity) (ida_authenticated{environment=~\"$d_environment\", host_name=~\"$d_hostname\", entity=\"User\"})",
+              "expr": "count by(entity) (ida_authenticated{"
+                      "environment=~\"$d_environment\","
+                      "host_name=~\"$d_hostname\","
+                      "entity=\"User\"})",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -1431,7 +1441,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "count by(entity) (ida_authenticated{environment=~\"$d_environment\", host_name=~\"$d_hostname\", entity=\"Machine\"})",
+              "expr": "count by(entity) (ida_authenticated{"
+                      "environment=~\"$d_environment\","
+                      "host_name=~\"$d_hostname\","
+                      "entity=\"Machine\"})",
               "hide": false,
               "legendFormat": "__auto",
               "range": true,
@@ -1496,7 +1509,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": false,
-              "expr": "(firewall_policy_time{host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\"}>100000)*1000",
+              "expr": "(firewall_policy_time{"
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\","
+                      "service_namespace=\"vs_id_0\"} > 100000) * 1000",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -1592,7 +1608,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "sum by(cpu) (100 - system_cpu_utilization{environment=~\"$d_environment\", host_name=~\"$d_hostname\", state=\"idle\"})",
+              "expr": "sum by(cpu) (100 - system_cpu_utilization{"
+                      "environment=~\"$d_environment\","
+                      "host_name=~\"$d_hostname\","
+                      "state=\"idle\"})",
               "legendFormat": "CPU-{{cpu}}",
               "range": true,
               "refId": "A"
@@ -1685,7 +1704,9 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "builder",
-              "expr": "system_network_blades_vpn_active_clients{environment=~\"$d_environment\", host_name=\"$d_hostname\"}",
+              "expr": "system_network_blades_vpn_active_clients{"
+                      "environment=~\"$d_environment\","
+                      "host_name=\"$d_hostname\"}",
               "legendFormat": "Active Clients",
               "range": true,
               "refId": "A"
@@ -1779,7 +1800,10 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "system_network_connections{environment=~\"$d_environment\", host_name=~\"$d_hostname\", component=\"FW\"}",
+              "expr": "system_network_connections{"
+                      "environment=~\"$d_environment\","
+                      "host_name=~\"$d_hostname\","
+                      "component=\"FW\"}",
               "legendFormat": "Conns",
               "range": true,
               "refId": "A"
