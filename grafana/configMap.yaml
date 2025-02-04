@@ -177,9 +177,9 @@ data:
               "exemplar": false,
               "expr": >
                 system_gaia_os_role{
-                  role=~".+", 
-                  host_name=~"$d_hostname", 
-                  environment=~"$d_environment", 
+                  role=~".+",
+                  host_name=~"$d_hostname",
+                  environment=~"$d_environment",
                   service_namespace="vs_id_0"
                 },
               "instant": true,
@@ -259,13 +259,13 @@ data:
               "exemplar": false,
               "expr": >
                 system_paging_usage{
-                  host_name=~"$d_hostname", 
-                  environment=~"$d_environment", 
-                  service_namespace="vs_id_0", 
+                  host_name=~"$d_hostname",
+                  environment=~"$d_environment",
+                  service_namespace="vs_id_0",
                   state="used"
                 } / ignoring (state) system_paging_limit{
-                  host_name=~"$d_hostname", 
-                  environment=~"$d_environment", 
+                  host_name=~"$d_hostname",
+                  environment=~"$d_environment",
                   service_namespace="vs_id_0"
                 } * 100,
               "instant": true,
@@ -282,15 +282,15 @@ data:
               "editorMode": "code",
               "expr": >
                 system_filesystem_usage{
-                  host_name=~"$d_hostname", 
-                  environment=~"$d_environment", 
-                  mountpoint="/", 
-                  service_namespace="vs_id_0", 
+                  host_name=~"$d_hostname",
+                  environment=~"$d_environment",
+                  mountpoint="/",
+                  service_namespace="vs_id_0",
                   state="used"
                 } / ignoring (state) system_filesystem_limit{
-                  host_name=~"$d_hostname", 
-                  environment=~"$d_environment", 
-                  mountpoint="/", 
+                  host_name=~"$d_hostname",
+                  environment=~"$d_environment",
+                  mountpoint="/",
                   service_namespace="vs_id_0"
                 } * 100,
               "hide": false,
@@ -306,15 +306,15 @@ data:
               "editorMode": "code",
               "expr": >
                 system_filesystem_usage{
-                  host_name=~"$d_hostname", 
-                  environment=~"$d_environment", 
-                  mountpoint="/var/log", 
-                  service_namespace="vs_id_0", 
+                  host_name=~"$d_hostname",
+                  environment=~"$d_environment",
+                  mountpoint="/var/log",
+                  service_namespace="vs_id_0",
                   state="used"
                 } / ignoring (state) system_filesystem_limit{
-                  host_name=~"$d_hostname", 
-                  environment=~"$d_environment", 
-                  mountpoint="/var/log", 
+                  host_name=~"$d_hostname",
+                  environment=~"$d_environment",
+                  mountpoint="/var/log",
                   service_namespace="vs_id_0"
                 } * 100,
               "hide": false,
