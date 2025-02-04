@@ -10,4 +10,4 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/mnt/grafana-dashboards"
+    path: "/grafana-dashboards"
