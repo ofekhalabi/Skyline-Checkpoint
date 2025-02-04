@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: grafana-dashboard-config
+  namespace: monitoring
 data:
   gateway_dashboard.json: |
     {
@@ -2231,6 +2232,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: grafana-dashboard-provider
+  namespace: monitoring
 data:
   dashboards.yaml: |
     apiVersion: 1
