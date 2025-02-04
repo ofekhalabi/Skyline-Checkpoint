@@ -328,7 +328,11 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "AVG(100-system_cpu_utilization{host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\", state=\"idle\"})",
+              "expr": "AVG(100 - system_cpu_utilization{"
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\","
+                      "service_namespace=\"vs_id_0\","
+                      "state=\"idle\"})",
               "hide": false,
               "legendFormat": "AVE CPU",
               "range": true,
@@ -340,7 +344,15 @@ data:
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "system_memory_usage{host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\", state=\"used\"}/ ignoring (state) system_memory_limit{host_name=~\"$d_hostname\", environment=~\"$d_environment\", service_namespace=\"vs_id_0\"} * 100",
+              "expr": "system_memory_usage{"
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\","
+                      "service_namespace=\"vs_id_0\","
+                      "state=\"used\"} / ignoring (state) "
+                      "system_memory_limit{"
+                      "host_name=~\"$d_hostname\","
+                      "environment=~\"$d_environment\","
+                      "service_namespace=\"vs_id_0\"} * 100",
               "hide": false,
               "legendFormat": "RAM",
               "range": true,
@@ -549,7 +561,9 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "cluster_xl_members_state{environment=~\"$d_environment\", id!~\".\"}",
+              "expr": "cluster_xl_members_state{"
+                      "environment=~\"$d_environment\","
+                      "id!~\".\"}",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -759,7 +773,10 @@ data:
               },
               "editorMode": "builder",
               "exemplar": false,
-              "expr": "system_cpu_utilization{environment=~\"$d_environment\", host_name=~\"$d_hostname\", state=\"idle\"}",
+              "expr": "system_cpu_utilization{"
+                      "environment=~\"$d_environment\","
+                      "host_name=~\"$d_hostname\","
+                      "state=\"idle\"}",
               "format": "table",
               "instant": true,
               "legendFormat": "__auto",
