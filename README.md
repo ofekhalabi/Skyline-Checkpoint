@@ -1,18 +1,40 @@
 # Skyline Checkpoint
-Skyline quickly and efficiently monitors your Check Point servers with industry-standard software and protocols (OpenTelemetry, Prometheus, and Grafana).
-## The Skyline component
-![Skyline component](https://raw.githubusercontent.com/ofekhalabi/Skyline-Checkpoint/main/skyline%20component.png)
+## What is Check Point Skyline?
+
+Skyline is an advanced monitoring solution based on **Prometheus and Grafana**, designed to provide **real-time insights, monitoring, and alerts** on the performance of Check Point Security Gateways and Management Servers.
+
+### Advantages of Skyline over CPView:
+1. **Advanced Data Collection** – Uses Prometheus to gather and store historical data.  
+2. **Interactive Visual Interface** – Displays data via Grafana dashboards.  
+3. **Integration with External Monitoring Systems** – Supports integrations with **ELK, Splunk, DataDog, etc.**  
+4. **Automation Support** – Enables advanced data analysis using **PromQL queries, smart rules, and alerting mechanisms**.  
+5. **Long-Term Data Retention** – Allows access to historical data over an extended period, unlike CPView.  
+
+---
+
+## Skyline vs. CPView: Comparison  
+
+| Feature            | Skyline | CPView |
+|--------------------|---------|--------|
+| **Interface**      | Grafana (Web UI) | CLI |
+| **Data Retention** | Long-term | Short-term |
+| **Automation & Alerts** | Yes | No |
+| **Third-Party Integration** | Yes (Prometheus, ELK, Splunk) | No |
+| **Data Granularity** | Advanced (PromQL queries) | Basic |
+| **Real-Time Monitoring** | Yes, but depends on polling intervals | Yes, instant |
+| **Usability** | Best for DevOps/SecOps teams | Best for Network Admins |
+
 
 ## The Skyline Logical Diagram
 ![Skyline component](https://raw.githubusercontent.com/ofekhalabi/Skyline-Checkpoint/main/skyline%20logical%20diagram.png)
 
 ## Requirements
-| Component   | Description                    | Status  |
-|------------|--------------------------------|--------|
-| **Check Point R80.40 and higher**<br>(for Security Gateways, Management Servers, Log Servers, SmartEvent Servers) | With these minimal Jumbo versions:<br><br>Jumbo Hotfix Accumulator for R81.20 - Take 8<br>Jumbo Hotfix Accumulator for R81.10 - Take 79<br>Jumbo Hotfix Accumulator for R81 - Take 77<br>Jumbo Hotfix Accumulator for R80.40 - Take 190<br><br>**Notes:**<br>• When enabled, the Skyline agent consumes approximately **50MB** of RAM.<br>• The Jumbo Hotfix Accumulator Takes mentioned above are the minimal required Takes.<br>• **Best Practice** - Use the Recommended Takes. | ✅ Active |
-| **Prometheus** | A third-party software that collects, stores, and queries metrics with a dedicated Timeseries Database.<br><br>The Prometheus Server exposes a **Remote Write** endpoint to which data can be pushed and stores the data in its local database.<br><br>Check Point supports **Prometheus version 2.37.1** and higher. | ✅ Active |
-| **Grafana** | A third-party software that connects to multiple data sources/databases (such as Prometheus) and visualizes the data, builds graphs, dashboards, and alerts.<br><br>Check Point supports **Grafana version 9** and higher. | ⚠️ Config Needed |
-| **ArgoCD** | ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It enables the management and automation of Kubernetes cluster deployments directly from a Git repository. | ✅ Active |
+| Component   | Description                    |
+|------------|--------------------------------|
+| **Check Point R80.40 and higher**<br>(for Security Gateways, Management Servers, Log Servers, SmartEvent Servers) | With these minimal Jumbo versions:<br><br>Jumbo Hotfix Accumulator for R81.20 - Take 8<br>Jumbo Hotfix Accumulator for R81.10 - Take 79<br>Jumbo Hotfix Accumulator for R81 - Take 77<br>Jumbo Hotfix Accumulator for R80.40 - Take 190<br><br>**Notes:**<br>• When enabled, the Skyline agent consumes approximately **50MB** of RAM.<br>• The Jumbo Hotfix Accumulator Takes mentioned above are the minimal required Takes.<br>• **Best Practice** - Use the Recommended Takes. |
+| **Prometheus** | A third-party software that collects, stores, and queries metrics with a dedicated Timeseries Database.<br><br>The Prometheus Server exposes a **Remote Write** endpoint to which data can be pushed and stores the data in its local database.<br><br>Check Point supports **Prometheus version 2.37.1** and higher. |
+| **Grafana** | A third-party software that connects to multiple data sources/databases (such as Prometheus) and visualizes the data, builds graphs, dashboards, and alerts.<br><br>Check Point supports **Grafana version 9** and higher. |
+| **ArgoCD** | ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It enables the management and automation of Kubernetes cluster deployments directly from a Git repository. |
 
 
 ## Work Steps
@@ -66,9 +88,13 @@ Skyline quickly and efficiently monitors your Check Point servers with industry-
 ### Step 7: Configure Access Control Policy
 - If you configured Skyline on a Security Gateway, ClusterXL, or Scalable Platform Security Group, then you must make sure your Access Control Policy allows the connection to the Prometheus Server to send the exported metrics.
 
+# Documentation
 
-# Prometheus and Grafana Configuration Guide
-
+### Prometheus and Grafana Configuration Guide
 For detailed instructions on configuring Prometheus with Grafana on Check Point Servers running Gaia OS, refer to the official guide:
 
 [Skyline Configuration on Check Point Servers: Prometheus with Grafana](https://sc1.checkpoint.com/documents/Appliances/Skyline/Content/Topics-AG/Configuration-on-Servers-Gaia-OS-Prometheus-with-Grafana.htm)
+
+### Skyline Deployment
+[Skyline Deployment](https://support.checkpoint.com/results/sk/sk178566)
+
