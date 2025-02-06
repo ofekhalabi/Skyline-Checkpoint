@@ -60,6 +60,13 @@ Skyline is an advanced monitoring solution based on **Prometheus and Grafana**, 
 
 ### Step 4: Install OpenTelemetry Agent and Collector on Check Point Server
 - In Check Point R81 and higher (with the required minimum Jumbo Hotfix Accumulator), the OpenTelemetry Agent and OpenTelemetry Collector are installed as part of the Jumbo Hotfix Accumulator installation.
+| **Major Version** | **Minimum JHF Take** |
+|-------------------|----------------------|
+| R81.20            | Take 8               |
+| R81.10            | Take 79              |
+| R81               | Take 77              |
+| R80.40            | Take 190             |
+You can find the documentation for the minimum supported versions/jumbo hotfix takes of Gaia at the main Skyline SK article [sk178566](https://support.checkpoint.com/results/sk/sk178566) under the Configuration subsection D.
 
 ### Step 5: Configure OpenTelemetry Collector to Work with Prometheus Server
 1. Configure the payload (with TLS or without it). The payload file is available in this repository.
