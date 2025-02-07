@@ -35,6 +35,3 @@ The `deployment.yaml` also includes a `Service` definition:
 
 ## Contributing
 Feel free to modify the deployment configurations to improve monitoring. Pull requests are welcome!
-
-## License
-This repository follows the same licensing terms as Skyline-Checkpoint.
