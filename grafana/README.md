@@ -7,6 +7,7 @@ This directory contains the necessary configurations for deploying Grafana in a 
 ```
 ├── configMap.yaml          # Configuration for dashboards and data sources
 ├── deployment.yaml         # Kubernetes deployment file for Grafana
+├── ingress.yaml            # Kubernetes ingress file for Grafana (optional)
 ├── grafana-dashboards/     # Contains JSON files for pre-configured dashboards
 ```
 
@@ -43,10 +44,21 @@ The `configMap.yaml` file includes:
 - **Access Mode:** `proxy`
 - **Default Time Interval:** 5 seconds
 
+## Optional: Exposing Grafana with an Ingress Controller
+To expose Grafana externally, use an Nginx Ingress Controller.
+Nginx Ingress Controller is one of the most widely used options for exposing services outside a Kubernetes cluster. It acts as a reverse proxy, routing incoming traffic to different Services.
+
+   ```bash
+   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.0/deploy/static/provider/baremetal/deploy.yaml
+   ```
+Once deployed, configure ingress.yaml to expose Grafana externally.
+
 ## Notes
 - Ensure Prometheus is deployed and accessible at the specified service URL.
 - Modify `configMap.yaml` as needed to customize dashboards and data sources.
 - Consider exposing Grafana externally via an Ingress for easier access.
+- **Health Check:** The Ingress configuration includes a `/healthz` endpoint for checking Grafana's health. Ensure that the Ingress controller is correctly set up to handle this path. You can test the health check with:
+
 
 ## Contributing
 Feel free to modify the deployment configurations to improve monitoring. Pull requests are welcome!
