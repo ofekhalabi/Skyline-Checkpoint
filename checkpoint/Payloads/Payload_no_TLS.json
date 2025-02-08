@@ -4,7 +4,7 @@
         {
             "enabled": true,
             "type": "prometheus-remote-write",
-            "url": "http://16.170.241.74:9090/api/v1/write"
+            "url": "https://<EXTERNAL_PROMETHEUS_IP_ADDRESS>:9090/api/v1/write"
         }
     ]}
 } 

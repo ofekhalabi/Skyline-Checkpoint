@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: ofekhnetflix.devops-int-college.com
+  - host: # YOUR_DNS_or_ROUTE53_DOMAIN_HERE 
     http:
       paths:
       - path: /
