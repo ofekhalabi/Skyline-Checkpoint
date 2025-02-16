@@ -24,12 +24,12 @@ spec:
         - name: GF_SECURITY_ADMIN_USER
           valuefrom:
             secretKeyRef:
-              name: grafana-secret
+              name: grafana-creds
               key: username
         - name: GF_SECURITY_ADMIN_PASSWORD
           valuefrom:
             secretKeyRef:
-              name: grafana-secret
+              name: grafana-creds
               key: password
         volumeMounts:
         - name: grafana-dashboard-provider-volume
