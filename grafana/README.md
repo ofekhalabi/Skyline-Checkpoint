@@ -33,6 +33,10 @@ The `deployment.yaml` file defines the Grafana deployment:
 The `deployment.yaml` also includes a `Service` definition:
 - **Type:** `ClusterIP` (Accessible within the cluster)
 - **Port:** `3000`
+#### Environment Variables
+Grafana supports environment variables to customize its behavior. The following environment variables can be set in deployment.yaml:
+- **GF_SECURITY_ADMIN_USER**: Specifies the admin username for Grafana.
+- **GF_SECURITY_ADMIN_PASSWORD**: Defines the admin password for Grafana.
 
 ## Configuration Details
 ### 1. Dashboard Configuration (`grafana-dashboard-provider` ConfigMap)
