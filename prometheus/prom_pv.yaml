@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 5Gi # 5Gi of storage
   accessModes:
-    - ReadWriteOnce # Only one node can read/write at a time
+    - ReadWriteMany # Multiple nodes can read/write at a time
   persistentVolumeReclaimPolicy: Retain  # Do not delete PV if PVC is removed
   hostPath:
     path: /mnt/prometheus-data # Path on the worker node

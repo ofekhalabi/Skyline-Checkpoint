@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   accessModes:
-    - ReadWriteOnce # Only one node can read/write at a time
+    - ReadWriteMany # Multiple nodes can read/write at a time
   resources:
     requests:
       storage: 5Gi # 5Gi of storage
