@@ -7,6 +7,8 @@ This directory contains the necessary configurations for deploying Grafana in a 
 ```
 ├── configMap.yaml          # Configuration for dashboards and data sources
 ├── deployment.yaml         # Kubernetes deployment file for Grafana
+├── grafana_pv.yaml         # PersistentVolume (PV) configuration for Grafana storage
+├── grafana_pvc.yaml        # PersistentVolumeClaim (PVC) for Grafana data storage
 ├── ingress.yaml            # Kubernetes ingress file for Grafana (optional)
 ├── grafana-dashboards/     # Contains JSON files for pre-configured dashboards
 ```
