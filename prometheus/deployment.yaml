@@ -20,6 +20,15 @@ spec:
         name: prometheus
         ports:
         - containerPort: 9090
+        volumeMounts:
+        - name: prometheus-storage
+          mountPath: /prometheus # prometheus data is stored here
+
+      volumes:
+      - name: prometheus-storage
+        persistentVolumeClaim:
+          claimName: prometheus-pvc
+
 
 ---
 apiVersion: v1
