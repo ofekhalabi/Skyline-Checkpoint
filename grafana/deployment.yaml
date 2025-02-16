@@ -22,12 +22,12 @@ spec:
         - containerPort: 3000
         env:
         - name: GF_SECURITY_ADMIN_USER
-          valuefrom:
+          valueFrom:
             secretKeyRef:
               name: grafana-creds
               key: username
         - name: GF_SECURITY_ADMIN_PASSWORD
-          valuefrom:
+          valueFrom:
             secretKeyRef:
               name: grafana-creds
               key: password
