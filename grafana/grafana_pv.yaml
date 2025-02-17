@@ -9,4 +9,4 @@ spec:
     - ReadWriteOnce # Only one node can read/write at a time
   persistentVolumeReclaimPolicy: Retain  # Do not delete PV if PVC is removed
   hostPath:
-    path: /mnt/grafana-data # Path on the worker node
+    path: /skyline/grafana-data # Path on the worker node
