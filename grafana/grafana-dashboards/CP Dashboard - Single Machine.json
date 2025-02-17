@@ -1273,7 +1273,7 @@
           "color": {
             "mode": "palette-classic"
           },
-          "displayName": "${__series.name}",
+          "displayName": "${__field.labels.type}",
           "mappings": [],
           "max": 100,
           "min": 0,
@@ -1348,7 +1348,7 @@
           "color": {
             "mode": "palette-classic"
           },
-          "displayName": "${__series.name}",
+          "displayName": "${__field.labels.interface}",
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -1421,7 +1421,7 @@
           "color": {
             "mode": "palette-classic"
           },
-          "displayName": "${__series.name}",
+          "displayName": "${__field.labels.interface}",
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -3382,32 +3382,7 @@
               },
               "unit": "cps"
             },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "- Connections / sec"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
+            "overrides": []
           },
           "gridPos": {
             "h": 10,

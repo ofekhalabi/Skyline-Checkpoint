@@ -1076,7 +1076,7 @@
           "color": {
             "mode": "palette-classic"
           },
-          "displayName": "${__series.name}",
+          "displayName": "${__field.labels.type}",
           "mappings": [],
           "max": 100,
           "min": 0,

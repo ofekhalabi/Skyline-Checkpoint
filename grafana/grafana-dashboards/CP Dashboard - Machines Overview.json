@@ -209,7 +209,7 @@
           "color": {
             "mode": "palette-classic"
           },
-          "displayName": "${__series.name}",
+          "displayName": "${__field.labels.host_name}",
           "mappings": [],
           "max": 100,
           "min": 0,
@@ -283,7 +283,7 @@
           "color": {
             "mode": "palette-classic"
           },
-          "displayName": "${__series.name}",
+          "displayName": "${__field.labels.host_name}",
           "mappings": [],
           "max": 100,
           "min": 0,
