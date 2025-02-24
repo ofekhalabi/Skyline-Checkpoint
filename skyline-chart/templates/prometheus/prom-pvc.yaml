@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.prometheus.pvc.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  accessModes:
+    - {{ .Values.prometheus.pvc.accessModes }} # Only one node can read/write at a time
+  resources:
+    requests:
+      storage: {{ .Values.prometheus.pvc.storage }} # 5Gi of storage

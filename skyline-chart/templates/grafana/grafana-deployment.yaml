@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.grafana.appname }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Values.grafana.appname }}
+spec:
+  replicas: {{ .Values.grafana.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.grafana.appname }}
+  template:
+    metadata:
+      labels:
+        app:  {{ .Values.grafana.appname }}
+    spec:
+      containers:
+      - name: {{ .Values.grafana.appname }}
+        image: {{ .Values.grafana.image }}
+        ports:
+        - containerPort: {{ .Values.grafana.port }}
+        env:
+        - name: GF_SECURITY_ADMIN_USER
+          valueFrom:
+            secretKeyRef:
+              name: grafana-creds
+              key: username
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grafana-creds
+              key: password
+        volumeMounts:
+        - name: grafana-dashboard-provider-volume
+          mountPath: /etc/grafana/provisioning/dashboards
+        - name: grafana-datasource-volume
+          mountPath: /etc/grafana/provisioning/datasources
+        - name: {{ .Values.grafana.storage.name }}
+          mountPath: {{ .Values.grafana.storage.mountPath }}  # Default Grafana data path
+
+      volumes:
+      - name: grafana-dashboard-provider-volume
+        configMap:
+          name: grafana-dashboard-provider
+      - name: grafana-datasource-volume
+        configMap:
+          name: grafana-datasources
+      - name: {{ .Values.grafana.storage.name }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.grafana.storage.claimName }}

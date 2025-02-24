@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.prometheus.appname }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Values.prometheus.appname }}
+spec:
+  replicas: {{ .Values.prometheus.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.prometheus.appname }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.prometheus.appname }}
+    spec:
+      containers:
+      - image: {{ .Values.prometheus.image }}
+        name: {{ .Values.prometheus.appname }}
+        ports:
+        - containerPort: {{ .Values.prometheus.port }}
+        volumeMounts:
+        - name: {{ .Values.prometheus.storage.name }}
+          mountPath: {{ .Values.prometheus.storage.mountPath }} # prometheus data is stored here
+
+      volumes:
+      - name: {{ . Values.prometheus.storage.name }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.prometheus.storage.claimName }}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.grafana.pv.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  capacity:
+    storage: {{ .Values.grafana.pv.storage }} # 5Gi of storage
+  accessModes:
+    - {{ .Values.grafana.pv.accessModes }} # Only one node can read/write at a time
+  persistentVolumeReclaimPolicy: {{ .Values.grafana.pv.policy }}  # Do not delete PV if PVC is removed
+  hostPath:
+    path: {{ .Values.grafana.pv.hostPath }} # Path on the worker node

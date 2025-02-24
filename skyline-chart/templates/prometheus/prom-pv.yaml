@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.prometheus.pv.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  capacity:
+    storage: {{ .Values.prometheus.pv.storage }} # 5Gi of storage
+  accessModes:
+    - {{ .Values.prometheus.pv.accessModes }} # Only one node can read/write at a time
+  persistentVolumeReclaimPolicy: {{ .Values.prometheus.pv.policy }}  # Do not delete PV if PVC is removed
+  hostPath:
+    path: {{ .Values.prometheus.pv.hostPath }} # Path on the worker node
