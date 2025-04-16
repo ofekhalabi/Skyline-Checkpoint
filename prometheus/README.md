@@ -29,6 +29,54 @@ The `deployment.yaml` also includes a `Service` definition:
 - **NodePort:** `30007` (Prometheus is accessible on this port from cluster nodes)
 - **Target Port:** `9090` (Maps to Prometheus inside the pod)
 
+## Resource Requirements & Probes
+To ensure optimal performance and stability for Prometheus, we configure resource requests and limits to match exactly. This gives the pod a Guaranteed Quality of Service (QoS) in Kubernetes, meaning it receives the highest scheduling priority and is the least likely to be evicted under resource pressure.
+### ⚙️ Guaranteed QoS Resource Configuration
+```
+resources:
+  requests:
+    memory: "1000Mi"
+    cpu: "250m"
+  limits:
+    memory: "1000Mi"
+    cpu: "250m"
+
+```
+
+## 🩺 Liveness & Readiness Probes
+
+Prometheus exposes internal health endpoints that Kubernetes can use to monitor its state:
+
+- `/-/healthy` – Used for liveness probing (whether the service is still functioning)
+- `/-/ready` – Used for readiness probing (whether Prometheus is ready to serve traffic)
+
+
+
+```
+livenessProbe:
+  httpGet:
+    path: /-/healthy
+    port: 9090
+  initialDelaySeconds: 15
+  periodSeconds: 10
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /-/ready
+    port: 9090
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  failureThreshold: 3
+
+
+```
+- **Liveness Probe** restarts the pod if Prometheus becomes unresponsive or enters a bad state.
+- **Readiness Probe** ensures that traffic is only routed to the pod when it is fully initialized and ready to handle requests.
+
+
+Together, these probes help Kubernetes manage the Prometheus pod lifecycle with zero downtime during deploys or upgrades.
+
 ## Notes
 - Ensure Grafana is correctly configured to visualize Prometheus metrics.
 - Modify `deployment.yaml` as needed to adjust Prometheus configurations.

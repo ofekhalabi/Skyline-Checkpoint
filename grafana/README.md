@@ -101,6 +101,46 @@ In your Application Load Balancer, create 2 target groups and 2 listeners, as fo
    3. Similarly, another target group for the HTTPS NodePort (`30683` in the above example output).
    4. create a corresponding listener on port 443. 
 
+## Resource Requirements & Probes
+To ensure optimal performance and stability for Grafana, we configure resource requests and limits to match exactly. This gives the pod a Guaranteed Quality of Service (QoS) in Kubernetes, meaning it receives the highest scheduling priority and is the least likely to be evicted under resource pressure.
+### ⚙️ Guaranteed QoS Resource Configuration
+```
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "250m"
+
+```
+
+## 🩺 Liveness & Readiness Probes
+Grafana exposes a `/api/health` endpoint that can be used to monitor both liveness and readiness of the application.
+
+```
+livenessProbe:
+  httpGet:
+    path: /api/health
+    port: 3000
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /api/health
+    port: 3000
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  failureThreshold: 3
+
+```
+- **Liveness Probe** restarts the pod if Grafana becomes unresponsive or enters a bad state.
+- **Readiness Probe** ensures that traffic is only routed to the pod when it is fully initialized and ready to handle requests.
+
+Together, these probes help Kubernetes manage the Grafana pod lifecycle with zero downtime during deploys or upgrades.
+
 ## Notes
 - Ensure Prometheus is deployed and accessible at the specified service URL.
 - Modify `configMap.yaml` as needed to customize dashboards and data sources.

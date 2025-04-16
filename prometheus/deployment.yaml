@@ -18,8 +18,29 @@ spec:
       containers:
       - image: prom/prometheus:v2.45.3
         name: prometheus
-        ports:
-        - containerPort: 9090
+        resources:
+          requests:
+            memory: "1000Mi"
+            cpu: "250m"
+          limits:
+            memory: "1000Mi"
+            cpu: "250m"
+        livenessProbe:
+          httpGet:
+            path: /-/healthy
+            port: 9090
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          failureThreshold: 3
+
+        readinessProbe:
+          httpGet:
+            path: /-/ready
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          failureThreshold: 3
+
         volumeMounts:
         - name: prometheus-storage
           mountPath: /prometheus # prometheus data is stored here
