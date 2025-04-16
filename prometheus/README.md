@@ -74,7 +74,6 @@ readinessProbe:
 - **Liveness Probe** restarts the pod if Prometheus becomes unresponsive or enters a bad state.
 - **Readiness Probe** ensures that traffic is only routed to the pod when it is fully initialized and ready to handle requests.
 
-
 Together, these probes help Kubernetes manage the Prometheus pod lifecycle with zero downtime during deploys or upgrades.
 
 ## Notes
