@@ -18,6 +18,9 @@ spec:
       containers:
       - image: prom/prometheus:v2.45.3
         name: prometheus
+        args:
+        - "--config.file=/etc/prometheus/prometheus.yml"
+        - "--storage.tsdb.path=/prometheus"
         resources:
           requests:
             memory: "1000Mi"
@@ -44,24 +47,14 @@ spec:
         volumeMounts:
         - name: prometheus-storage
           mountPath: /prometheus # prometheus data is stored here
+        - name: prometheus-config
+          mountPath: /etc/prometheus/prometheus.yml
+          subPath: prometheus.yml # config file is mounted here
 
       volumes:
       - name: prometheus-storage
         persistentVolumeClaim:
           claimName: prometheus-pvc
-
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: prometheus-service
-  namespace: monitoring
-spec:
-  type: NodePort
-  selector:
-    app: prometheus
-  ports:
-    - port: 9090
-      targetPort: 9090
-      nodePort: 30007  
+      - name: prometheus-config
+        configMap:
+          name: prometheus-config
