@@ -29,6 +29,10 @@ prometheus:
     accessModes: ReadWriteOnce
     storage: 5Gi
 
+  configMap:
+    prometheusConfig:
+      name: prometheus-config
+
 grafana:
   appname: grafana
   image: grafana/grafana:10.4.14

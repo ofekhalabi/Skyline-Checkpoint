@@ -23,8 +23,18 @@ spec:
         volumeMounts:
         - name: {{ .Values.prometheus.storage.name }}
           mountPath: {{ .Values.prometheus.storage.mountPath }} # prometheus data is stored here
-
+        - name: {{ .Values.prometheus.configMap.prometheusConfig.name }}
+          mountPath: /etc/prometheus/prometheus.yml 
+          subPath: prometheus.yml # mount the config file from the configMap
+        args:
+        - "--config.file=/etc/prometheus/prometheus.yml"
+        - "--storage.tsdb.path=/prometheus" # path to store data
+        
       volumes:
       - name: {{ . Values.prometheus.storage.name }}
         persistentVolumeClaim:
           claimName: {{ .Values.prometheus.storage.claimName }}
+      - name: {{ .Values.prometheus.configMap.prometheusConfig.name }}
+        configMap:
+          name: {{ .Values.prometheus.configMap.prometheusConfig.name }}
+         

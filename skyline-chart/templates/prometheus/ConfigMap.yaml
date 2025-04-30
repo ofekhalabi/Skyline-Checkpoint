@@ -2,8 +2,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: prometheus-config
-  namespace: monitoring
+  name: {{ .Values.prometheus.configMap.prometheusConfig.name }}
+  namespace: {{ .Release.Namespace }}
 data:
   prometheus.yml: |
     global:
