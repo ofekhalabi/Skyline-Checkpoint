@@ -23,11 +23,9 @@ jobs:
         run: npm install
 
       - name: Run Snyk test
-        uses: snyk/actions@v1
+        uses: snyk/actions@v3
         with:
-          snyk-token: ${{ secrets.SNYK_TOKEN }}  
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          snyk-token: ${{ secrets.SNYK_TOKEN }}
 
       - name: Upload Snyk test result
         uses: actions/upload-artifact@v2
