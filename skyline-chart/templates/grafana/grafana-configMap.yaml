@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.grafana.configMap.grafana-dashboard-provider.name }}
+  name: {{ .Values.grafana.configMap.grafanaDashboardProvider.name }}
   namespace: {{ .Release.Namespace }}
 data:
   dashboards.yaml: |
@@ -21,7 +21,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.grafana.configMap.grafana-datasources.name }}
+  name: {{ .Values.grafana.configMap.grafanaDatasources.name }}
   namespace: {{ .Release.Namespace }}
 data:
   prometheus-datasource.yaml: |

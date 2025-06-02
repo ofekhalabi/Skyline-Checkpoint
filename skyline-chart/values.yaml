@@ -63,10 +63,10 @@ grafana:
     storage: 5Gi
   
   configMap:
-    grafana-dashboard-provider:
+    grafanaDashboardProvider:
       name: grafana-dashboard-provider
     
-    grafana-datasources:
+    grafanaDatasources:
       name: grafana-datasources
 
   ingress:
