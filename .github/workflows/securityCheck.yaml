@@ -14,21 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Run Snyk to check Docker image for vulnerabilities
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Snyk test
-        uses: snyk/actions@v3
-        with:
-          snyk-token: ${{ secrets.SNYK_TOKEN }}
-
-      - name: Upload Snyk test result
-        uses: actions/upload-artifact@v2
-        with:
-          name: snyk-report
-          path: snyk-report.json
+          image: prom/prometheus:v2.45.3
