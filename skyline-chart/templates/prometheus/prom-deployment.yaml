@@ -31,7 +31,7 @@ spec:
         - "--storage.tsdb.path=/prometheus" # path to store data
         
       volumes:
-      - name: {{ . Values.prometheus.storage.name }}
+      - name: {{ .Values.prometheus.storage.name }}
         persistentVolumeClaim:
           claimName: {{ .Values.prometheus.storage.claimName }}
       - name: {{ .Values.prometheus.configMap.prometheusConfig.name }}
